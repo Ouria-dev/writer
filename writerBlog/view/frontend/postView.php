@@ -1,0 +1,2 @@
+<!--Affichage commentaires-->
+<?php 
