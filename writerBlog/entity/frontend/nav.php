@@ -5,7 +5,7 @@
                 <?php if(isset($_SESSION['pseudo'])) { ?>
                     <span>Bonjour <?= $_SESSION['pseudo'];?></span>
                 <?php }else{ ?> 
-                    <span>Bienvenu sur mon blog</span>
+                    <span>Bienvenue sur mon blog</span>
                 <?php } ?>
             </p>
   

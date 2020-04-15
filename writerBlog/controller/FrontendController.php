@@ -1,7 +1,7 @@
 <?php 
 /* --- CONTROLLER FRONTEND --- */
-
-require_once('model/PostManager.php');//chargement des classes
+//chargement des classes
+require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/MembersManager.php');
 
@@ -78,7 +78,7 @@ class FrontendController {
 		require('view/frontend/inscriptionView.php');
 	}
 
-/* Ajout membre */
+/* Ajout de membre */
 	static function addMember($pseudo, $mail, $mdp) 
 	{
 		$membre = new MembersManager();

@@ -1,2 +1,161 @@
 /************ GLOBAL *************************************
 **********************************************************/
+
+body, html{
+    background-color:#1e232a;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-image: url(../images/home.jpg);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    font-family: 'Lora', serif;
+    width: 100%;
+    height: 450px;
+    margin: 0;
+    padding-top: 100px;
+    text-align: center;
+}
+
+header h1{
+    margin-top: 0px;
+    padding-top: 100px;
+    color: #1e232ace;
+    font-size: 3.5em;
+}
+
+#subTitre {
+    font-size: 1.5em;
+}
+
+#headerAdmin {
+    background-color:gray;
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+#headerAdmin h1 {
+    margin: 0px;
+    padding: 45px 0 0 0;
+    color: #1e232ace;
+    font-size: 2.5em;
+}
+
+.footer {
+    display: block;
+    bottom: 40px;
+    width: 100%;
+    height: 60px;
+    background-color: #181c22;
+    color: rgb(2, 2, 2);
+    text-align: center;
+  }
+
+ .Copyrights {
+     padding: 10px;
+     font-size: 1em;
+     font-weight: bold;
+ }
+
+h4 {
+    color: white;
+}
+
+/* MENU */
+nav {
+    margin-bottom: 45px;
+}
+
+nav ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    background-color: #697485e7;
+    text-align: center;
+    border: 1px solid black;
+}
+
+nav li{
+    display: inline-block;
+    padding: 10px;
+    margin: 0 0px;
+    border: 1px solid #1e232a;
+    text-align: center;
+    font-size: 1.3em;
+    background-color: #303842;
+}
+
+nav li:hover{
+    background-color: #ffc013;
+}
+
+nav li a{
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+
+/*HEADER*/
+
+#hello {
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    margin: 0;
+    padding-top: 7px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffc013;
+}
+
+#logo {
+    display: inline-block;
+    margin: 0;
+    height: 80px;
+}
+
+/*ACCUEIL TEXTE*/
+
+.container {
+    display: flex;
+    background-color: #1e232a;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+}
+
+.item {
+    opacity: 1;
+    background-color: #15181d;
+    border: 3px solid #15181d;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 30px;
+    color: #cec9bd;
+    font-size: 1.4em;
+}
+
+.texteItalic {
+    font-style: italic;
+    text-align: center;
+}
+
+.texteAccueil {
+    text-align: center;
+}
+
+.accueilh2 {
+    text-align: center;
+}
