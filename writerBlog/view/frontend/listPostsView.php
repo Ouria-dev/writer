@@ -1,7 +1,7 @@
 <!--Liste des chapitres mis en ligne pour lecture-->
 <?php $title = 'Chapitres du blog'; ?>
 <?php ob_start();?>
-<?php require('entity/frontend/nav.php'); ?>
+<?php require('include/nav.php'); ?>
 
 <div>
 	<div class="postContent" >
@@ -27,6 +27,6 @@
 	</div>
 </div>
 
-<?php require('entity/frontend/footer.php'); ?>
+<?php require('include/footer.php'); ?>
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>

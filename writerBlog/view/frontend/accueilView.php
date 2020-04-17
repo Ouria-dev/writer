@@ -1,7 +1,7 @@
 <?php $title = 'Accueil du blog de Jean Forteroche'; ?>
 <?php ob_start();?>
 
-<?php require('entity/frontend/nav.php'); ?>
+<?php require('include/nav.php'); ?>
  
 <div class="container">
         <div class="item">
@@ -34,6 +34,6 @@
     </div>
 
   
-  <?php require('entity/frontend/footer.php'); ?>
+  <?php require('include/footer.php'); ?>
   <?php $content = ob_get_clean(); ?>
   <?php require('template.php'); ?>

@@ -1,7 +1,7 @@
 <!--Affichage interface commentaires-->
 <?php $title = htmlspecialchars($post['title']); ?>
 <?php ob_start(); ?>
-<?php require('entity/frontend/nav.php'); ?>
+<?php require('include/nav.php'); ?>
 
 <div class="postContent">
     <div align="center"><br>
@@ -64,6 +64,6 @@
       </div>
     </div>
 
-    <?php require('entity/frontend/footer.php'); ?>
+    <?php require('include/footer.php'); ?>
     <?php $content = ob_get_clean(); ?>
     <?php require('template.php'); ?>

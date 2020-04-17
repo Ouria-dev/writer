@@ -23,4 +23,4 @@
 
 
 <?php $content = ob_get_clean(); ?>
-<?php require('entity/frontend/headConnexion.php'); ?> 
+<?php require('include/headConnexion.php'); ?> 

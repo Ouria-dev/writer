@@ -1,6 +1,6 @@
 <nav>
     <div>
-        <ul id="smart">
+        <ul>
             <p id="hello">
                 <?php if(isset($_SESSION['pseudo'])) { ?>
                     <span>Bonjour <?= $_SESSION['pseudo'];?></span>

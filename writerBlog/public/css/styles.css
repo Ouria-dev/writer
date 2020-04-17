@@ -159,3 +159,25 @@ nav li a{
 .accueilh2 {
     text-align: center;
 }
+
+
+/*Go To Top */
+
+#myBtn {
+	position: fixed;
+	bottom: 8px;
+	right: 30px;
+	z-index: 99;
+	border: none;
+	outline: none;
+	background-color: #ffc013;
+	color: white;
+	cursor: pointer;
+	padding: 10px 15px;
+	border-radius: 10px;
+	font-size: 18px; 
+  }
+  
+  #myBtn:hover {
+	background-color: #3ab13a; 
+  }
