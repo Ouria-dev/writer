@@ -25,7 +25,7 @@
                 <p class="texteAccueil">Après avoir écrit plusieurs nouvelles, je me suis tourné vers les romans de science-fiction:<br><br>
                   1985 "Retour vers le passé", 1990 "la planète des humains", 1995 "L"Armée des 12 orcs", 2001 "L'odyssée de l'hyper-espace".</p>
                 <p class="texteAccueil">Puis ensuite j'ai eu ma période de romance.<br><br>
-                  2003 "Coup de fourdre à Clermont-Férrand", 2005 "Quand Harry rencontre Ginette", 2010 "Autant en emporte le confinement.</p>
+                  2003 "Coup de foudre à Clermont-Férrand", 2005 "Quand Harry rencontre Ginette", 2010 "Autant en emporte le confinement.</p>
                 <p class="texteAccueil">Enfin ma période d'aventure et de découverte.<br><br>
                   2013 "Le seigneur des roseaux", 2016 "A la recherche du pays perdu", 2019 "À la poursuite du diamant rose".</p>
                 <p class="texteItalic">Nous voici maintenant dans une nouvelle aventure. Celle de L'Alaska !</p>
