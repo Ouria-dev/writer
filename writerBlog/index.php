@@ -115,6 +115,22 @@ if (isset($_GET['action'])) {
   }
 }
 
+/* Connexion gestion Admin */
+if (isset($_GET['action'])) {
+  if ($_GET['action'] == 'adminViewConnect') {
+    if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+        header('Location: index.php');
+      }else{
+        if (isset($_SESSION) && $_SESSION['droits'] == '1') {
+          BackendController::adminViewConnect();
+        }else { 
+          echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Vous n\'avez pas de droit administrateur !</p>';
+        }
+      }
+  }
+}
+
+
 
 
 
