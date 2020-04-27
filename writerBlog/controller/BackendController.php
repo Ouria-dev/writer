@@ -15,7 +15,7 @@ class BackendController {
     }
 
 
-/* -- CHAPITRE -- */
+/* -- CHAPITRES -- */
 
 /* Récupération chapitre admin par id */
     static function postAdmin() { 	
@@ -69,49 +69,59 @@ class BackendController {
         }
     }
 
-/* -- COMMENTAIRE -- */
+/* -- COMMENTAIRES -- */
 
+/* Récupération de tout les commentaires pour les afficher dans l'admin*/	
+    static function allCommentViewAdmin() { 	
+        $commentsManager = new CommentManager();
+        $allcomments = $commentsManager->allGetCommentsBdd();
+        require('view/backend/allCommentsViewAdmin.php');
+    }
 
+/* Récupère les commentaires signalés pour les afficher dans l'admin */
+    static function commentsAdmin()	{ 	
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getCommentReportsBdd($_GET['signalement']);
+        require('view/backend/commentsAdmin.php');
+    }
 
+/* Dé-signale le commentaire signalé */
+    static function delReports($commentId) { 	
+        $commentManager = new CommentManager();
+        $comments = $commentManager->delReportsBdd($commentId);
 
+        if($comments === false) {
+            die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur... Impossible de designaler le commentaire!</p>');
+        }else{ 
+            header('Location: index.php?action=commentsAdmin&signalement=1');
+        }
+        require('view/backend/commentsAdmin.php');
+    }
 
+/* Supprime le commentaire signalé */
+    static function delComments($commentId) {
+        $supprime = new CommentManager();
+        $deletedComment = $supprime->delCommentBdd($commentId);
 
+        if($deletedComment === false) {
+            die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Impossible de supprimer ce commentaire...</p>');
+            require('view/backend/commentsAdmin.php');
+        }else{
+            header('Location: index.php?action=commentsAdmin&signalement=1');
+        }
+    }
 
+/* Supprime le commentaire */
+    static function delComment($commentId) {
+        $supprime = new CommentManager();
+        $deletedComment = $supprime->delCommentBdd($commentId);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if($deletedComment === false) {
+            die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Impossible de supprimer ce commentaire...</p>');
+            require('view/backend/allCommentsViewAdmin.php');
+        }else{
+            header('Location: index.php?action=commentViewAdmin');
+        }
+    }
+//end
 }
