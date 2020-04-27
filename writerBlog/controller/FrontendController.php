@@ -11,7 +11,7 @@ class FrontendController {
 
 /* Affichage page d'accueil */
 	static function pageAccueil() {
-		require('view/frontend/accueilView.php');//chargement de la page qui affichera la page d'accueil
+		require('view/frontend/accueilView.php');
 	}
 
 /* affichage formulaire connexion */
@@ -27,7 +27,7 @@ class FrontendController {
 /* Affiche les chapitres */ 
 	static function listChapitres()	{
 		$postManager = new PostManager();
-		$posts = $postManager->getPostsBdd();//appel la fonction de récupération de tous les chapitres rangés en ordre de date descendante de cet objet
+		$posts = $postManager->getPostsBdd();//appel la fonction de récupération de tous les chapitres par ordre décroissant
 		require('view/frontend/listPostsView.php');
 	}
 
@@ -87,7 +87,7 @@ class FrontendController {
 /* Récupère la liste de tous les articles pour affichage */    
     static function listPosts() {
 	    $postManager = new PostManager();//création objet
-		$posts = $postManager->getPostsBdd();//appel la fonction de récupération de tous les chapitres décroissant
+		$posts = $postManager->getPostsBdd();
 	    require('view/frontend/listPostsView.php'); 
     }
 
