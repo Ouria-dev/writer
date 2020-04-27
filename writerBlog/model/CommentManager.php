@@ -24,6 +24,15 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+/* Récupération de tout les commentaires dans la Bdd*/
+	public function allGetCommentsBdd() {
+		$db = $this->dbConnect();
+		$allcomments = $db->prepare('SELECT id, id_billet, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+		$allcomments->execute(array());
+
+		return $allcomments;
+	}
+
 /* Récupération des commentaires signalés dans la Bdd */
 	public function getCommentReportsBdd($signalement) 
 	{
