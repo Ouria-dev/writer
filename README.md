@@ -1,5 +1,5 @@
 # writer
-Création d'un blog pour un écrivain. Projet 4
+Création d'un blog pour un écrivain. Projet 4 - PHP
 
 Projet 4 - Formation Web Développeur Junior OpenClassrooms
 
