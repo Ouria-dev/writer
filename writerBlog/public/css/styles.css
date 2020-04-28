@@ -1,4 +1,4 @@
-/************ GLOBAL *************************************
+/************ STYLES *************************************
 **********************************************************/
 
 body, html{
@@ -160,6 +160,160 @@ nav li a{
     text-align: center;
 }
 
+/*POSTS*/
+
+.postContent {
+    background-color:#1e232a;
+    margin-top: 0;
+    color: rgb(183, 187, 173);
+    padding: 10px;
+    margin-bottom: 0px;
+    border-radius:5px;
+}
+
+.postContent h2 {
+    text-align: center;
+    font-size: 1.9em;
+    color: #c09214;
+}
+
+.postContent h3 {
+    text-align: center;
+    font-size: 1.4em;
+    font-style: italic;
+    color: #c09214;
+}
+
+
+.postContent a{
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #ffc013;
+}
+
+.postContent a:hover{
+    background-color: #3ab13a;
+}
+
+.postContentButtons{
+    margin: 0 auto;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#commentBox {
+    width: 450px;
+    height: 150px;
+}
+
+#commentButton {
+    display: flex;
+    font-size: 1.2em;
+    color: white;
+    background-color: #ffc013;
+    text-align: center;
+    padding: 10px;
+    border:1px solid black;
+    border-radius: 4px;
+}
+
+#commentButton:hover {
+    cursor: pointer;
+    background-color: #3ab13a;
+}
+
+.newpost {
+    width: 60%;
+    margin: 50px auto;
+    text-align: justify;
+    font-size: 1.2em;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color:#10151a;
+}
+
+.commentOld {
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color:#10151a;
+}
+
+#newpostTitle {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.newpost h3 {
+    padding: 5px;
+    color: white;
+    border-radius:5px;
+}
+
+.newpost a {
+    text-decoration: none;
+    color: white; 
+}
+
+.backToPosts {
+    text-align: center;
+    margin: 30px;
+}
+
+.backToPosts a{
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 9px;
+    background-color: #ffc013;
+    text-decoration: none;
+    color: #eee;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+
+.backToPosts a:hover{
+    background-color: #3ab13a;
+}
+
+#error{
+    font-size: 1.8em;
+    color: red;
+    font-weight:bold;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.butonLine {
+    display: flex;
+    justify-content: center;
+}
+
+/*ADMIN PAGE*/
+
+#title {
+    width: 350px;
+    height: 25px;
+}
+
+.titleAdmin {
+    color: white;
+    font-size: x-large;
+}
+
+.soustitleAdmin {
+    color: #ffc013;
+    font-size: 1.7em;
+}
+
+
 
 /*Go To Top */
 
@@ -181,3 +335,176 @@ nav li a{
   #myBtn:hover {
 	background-color: #3ab13a; 
   }
+
+/*Tableau de modération des commentaires*/
+
+td, th{
+    border:2px double black;
+}
+
+#moderationTable{
+    background-color: whitesmoke;
+    width: 80%;
+    margin: 20px auto;
+    border-collapse:collapse;
+}
+
+.postColumn{
+    width: 10%;
+    font-weight: bold;
+}
+
+.commentColumn {
+    font-size: 1.2em;
+}
+
+table caption{
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table th{
+    padding: 10px; 
+    font-size: 1.2em;
+}
+
+table td{
+    padding: 10px;
+}
+
+.buttonOk {
+    display: flex;
+    font-size: 1.2em;
+    background-color: #3ab13a;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border:1px solid black;
+    color: white;
+    border-radius: 4px;
+}
+
+.buttonOk:hover {
+    cursor: pointer;
+}
+
+.buttonOk a {
+    text-decoration: none;
+    color: white;
+}
+
+.delButton {
+    display: flex;
+    font-size: 1.2em;
+    color: white;
+    background-color: red;
+    text-align: center;
+    padding: 10px;
+    border:1px solid black;
+    border-radius: 4px;
+}
+
+.delButton:hover {
+    cursor: pointer;
+}
+
+.delButton a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+ /*-------------------------------------------
+ MEDIA QUERIES TABLETTE ET SMARTPHONE--------
+ --------------------------------------------*/
+
+ @media screen and (max-width: 1430px) {
+    p img {
+        width: 30rem;
+    }
+    #hello {
+        display: none;
+    }
+
+ }
+
+    @media screen and (max-width: 1070px) {
+
+header {
+            display: none;
+}
+
+#hello {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+nav {
+    display: block;
+    width: 100%;
+}
+
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+nav ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.postColumnTitle {
+    display: none;
+}
+
+.postColumn {
+    display: none;
+}
+
+.dateColumn, .commentColumn, .authorColumnTitle, .commentColumnTitle   {
+    font-size: 0.7em;
+}
+
+#commentButton {
+    font-size: 0.8em;
+}
+
+.soustitleAdmin {
+    font-size: 1.2em;
+}
+
+.buttonOk {
+    font-size: 0.7em;
+}
+
+.backToPosts {
+    font-size: 0.7em;
+}
+
+.delButton {
+    font-size: 0.7em;
+}
+
+p img {
+    display: none;
+}
+    
+}
