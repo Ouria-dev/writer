@@ -15,7 +15,7 @@ class BackendController {
     }
 
 
-/* -- CHAPITRES -- */
+/* -- CHAPITRE -- */
 
 /* Récupération chapitre admin par id */
     static function postAdmin() { 	

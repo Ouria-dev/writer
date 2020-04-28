@@ -7,7 +7,7 @@
       <meta name="author" content="Frédéric Garcia" />
       <meta name="copyright" content="©2020 Frédéric Garcia " />
       <link rel="stylesheet" href="public/css/connexion.css">
-      <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Lato:300,400,600,700|Parisienne" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" type="text/css" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf " crossorigin="anonymous">
       <link rel="icon" type="image/png" href="public/images/favicon.png" /> 
       <meta name="description" content="Blog billet simple pour l'Alaska" />
