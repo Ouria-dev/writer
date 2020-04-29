@@ -274,34 +274,3 @@ if (isset($_GET['action'])) {
 }else{ 
   FrontendController::pageAccueil(); //si aucune action, alors affiche la page d'accueil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Affiche la page d'accueil */ 
-}else{ 
-  FrontendController::pageAccueil(); //si aucune action, alors affiche la page d'accueil
-}
