@@ -20,54 +20,78 @@ class BackendController {
 /* Récupération chapitre admin par id */
     static function postAdmin() { 	
         $postManager = new PostManager();
-        $chapy = $postManager->getPostIdBdd($_GET['id']);
-        require('view/backend/postAdmin.php');
+        $chapitre = $postManager->getPostIdBdd($_GET['id']);
+
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+            }
+             if (isset($_GET['id']) && $_GET['id'] > 0) {
+                require('view/backend/postAdmin.php');
+            
+            }else{
+                echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Problème d\'affichage du chapitre !</p>';
+            }
     }
 
- /* Affichage de la liste des chapitres "Admin" */
-    static function listPostViewAdmin()     {
+/* Affichage de la liste des chapitres "Admin" */
+    static function listPostViewAdmin() {
         $postManager = new PostManager();
         $posts = $postManager->getPostsAdminBdd();
-        require('view/backend/listPostViewAdmin.php');
+
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+            }else{
+            require('view/backend/listPostViewAdmin.php');
+            }
     }
 
- /* Rédation, création d'un chapitre */
-    static function addPost($title, $content) {
-        $chapEdit = new PostManager();//création objet nouvel objet
-        $chapitre = $chapEdit->addPostBdd($title, $content);
-        
-        if($chapitre === false) {//condition si false on arrête le script
-            die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur... Impossible d \'ajouter un chapitre !');
-        }else{//sinon affiche la liste des chapitres
-            header('Location: index.php?action=listPostViewAdmin');
-        }
-    } 
- 
- /* Modification de chapitre existant "admin" */
+/* Rédation, création d'un chapitre */
+static function addPost($title, $content) {
+    $chapEdit = new PostManager();//création objet nouvel objet
+    $chapitre = $chapEdit->addPostBdd($title, $content);
+    
+    if($chapitre === false) {//condition si false on arrête le script
+        die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur... Impossible d \'ajouter un chapitre !');
+    }else{//sinon affiche la liste des chapitres
+        header('Location: index.php?action=listPostViewAdmin');
+    }
+}
+
+/* Modification de chapitre existant "admin" */
     static function editPost($title, $content, $postId) {
         $chapModif = new PostManager();
         $chapOk = $chapModif->updatePostBdd($title, $content, $postId);
     
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+            }
         if($chapOk === false) {
             die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur...Impossible de modifier ce chapitre!</p>');
             require('view/backend/postAdmin.php');
         }else{
+            if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
             header('Location: index.php?action=listPostViewAdmin');
+            }
         }
     }
 
- /* Supprime un chapitre */
+/* Supprime un chapitre */
     static function delPost($dataId) {
         $supprime = new PostManager();
         $deletedPost = $supprime->delPostBdd($dataId);
 
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+        
         if($deletedPost === false) {
             die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Impossible de supprimer ce chapitre !</p>');
             require('view/backend/postAdmin.php');
+
         }else{
-            header('Location: index.php?action=listPostViewAdmin');
+            header('Location: index.php');
         }
     }
+}
 
 /* -- COMMENTAIRES -- */
 
@@ -75,7 +99,12 @@ class BackendController {
     static function allCommentViewAdmin() { 	
         $commentsManager = new CommentManager();
         $allcomments = $commentsManager->allGetCommentsBdd();
-        require('view/backend/allCommentsViewAdmin.php');
+
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+          }else{
+            require('view/backend/allCommentsViewAdmin.php');
+          }
     }
 
 /* Récupère les commentaires signalés pour les afficher dans l'admin */
