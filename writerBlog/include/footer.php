@@ -1,6 +1,6 @@
     <!-- FOOTER -->
     <footer class="footer">
-        <p class="Copyrights">Copyrights &copy; 2020 Frédéric garcia - Tous droits réservés. Projet OpenClassrooms</p>
+        <p class="Copyrights">Copyrights &copy; 2020 Frédéric garcia - Tous droits réservés. Projet OpenClassrooms - <a href="https://github.com/Ouria-dev/writer" target="_blank"><i class="icon-github"></i></a></p>
     </footer>
 
         
