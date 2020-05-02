@@ -63,7 +63,7 @@ header h1{
   }
 
  .Copyrights {
-     padding: 10px;
+     padding: 20px 0;
      font-size: 1em;
      font-weight: bold;
  }
@@ -73,38 +73,131 @@ h4 {
 }
 
 /* MENU */
-nav {
-    margin-bottom: 45px;
+
+.menu {
+    flex-basis: 100%;
+    list-style: none;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 2em;
+    text-transform: uppercase;
+    transition: margin .5s ease-in-out, max-height .5s ease-in-out, opacity .3s .1s ease-in-out;
+}
+
+.menu li {
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 1.3em;
+    background-color: #303842;
+}
+
+.menu li a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: white;
+}
+
+nav li:hover {
+    background-color: #ffc013;
 }
 
 nav ul{
     padding: 0;
     margin: 0;
     list-style-type: none;
-    background-color: #697485e7;
-    text-align: center;
-    border: 1px solid black;
+
 }
 
-nav li{
-    display: inline-block;
-    padding: 10px;
-    margin: 0 0px;
-    border: 1px solid #1e232a;
-    text-align: center;
-    font-size: 1.3em;
-    background-color: #303842;
+
+.menu-checkbox:checked ~ .menu {
+    margin: 1em 0;
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
 }
 
-nav li:hover{
-    background-color: #ffc013;
+.menu-checkbox {
+	opacity: 0;
+	position: absolute;
+	top: -1000px;
 }
 
-nav li a{
-    display: block;
-    text-decoration: none;
-    color: white;
+.menu-checkbox:focus + .menu-toggle {
+    outline: #00A1A1 auto 5px;
 }
+
+.menu-toggle {
+    padding: .5em 1em;
+    color: #eee;
+    height: 50px;
+    font-size: xx-large;
+}
+
+.nav-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 85em) {
+
+    .nav-wrapper {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: #697485e7;
+    }
+
+    .menu {
+        flex-basis: auto;
+        margin: 0;
+        max-height: 1000px;
+        opacity: 1;
+        padding: 0;
+        visibility: visible;
+    }
+
+    .menu-toggle,
+    .menu-checkbox {
+        display: none;
+    }
+
+    nav ul{
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        background-color: #697485e7;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+
+    nav li:hover{
+        background-color: #ffc013;
+    }
+
+    .menu li {
+        display: inline-block;
+        padding: 10px;
+        margin: 0 0px;
+        text-align: center;
+        font-size: 1.3em;
+        background-color: #303842;
+    }
+
+    .menu li a {
+        padding: .5em;
+        display: block;
+        text-decoration: none;
+        color: white;
+    }
+}
+
+
 
 
 /*HEADER*/
@@ -112,9 +205,9 @@ nav li a{
 #hello {
     display: inline-block;
     position: absolute;
-    left: 20px;
+    left: 40px;
     margin: 0;
-    padding-top: 7px;
+    padding-top: 19px;
     font-size: 1.5em;
     font-weight: bold;
     color: #ffc013;
@@ -186,7 +279,6 @@ nav li a{
 
 
 .postContent a{
-    border: 1px solid black;
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 10px;
@@ -268,7 +360,6 @@ nav li a{
 }
 
 .backToPosts a{
-    border: 2px solid black;
     border-radius: 4px;
     padding: 9px;
     background-color: #ffc013;
@@ -297,11 +388,6 @@ nav li a{
 }
 
 /*ADMIN PAGE*/
-
-#title {
-    width: 350px;
-    height: 25px;
-}
 
 .titleAdmin {
     color: white;
@@ -340,10 +426,10 @@ nav li a{
 
 td, th{
     border:2px double black;
+    background-color: rgb(184, 177, 177);
 }
 
 #moderationTable{
-    background-color: whitesmoke;
     width: 80%;
     margin: 20px auto;
     border-collapse:collapse;
@@ -420,7 +506,7 @@ table td{
  MEDIA QUERIES TABLETTE ET SMARTPHONE--------
  --------------------------------------------*/
 
- @media screen and (max-width: 1430px) {
+ @media screen and (max-width: 1725px) {
     p img {
         width: 30rem;
     }
