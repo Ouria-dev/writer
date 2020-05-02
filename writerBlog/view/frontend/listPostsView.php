@@ -5,7 +5,7 @@
 
 <div>
 	<div class="postContent" >
-		<h2>Billet simple pour l'Alaska</h2>
+		<h2>Mon livre "Billet simple pour l'Alaska"</h2>
 		<h3>Les chapitres...</h3>
 		<?php   while ($data = $posts->fetch())   { ?>
 		

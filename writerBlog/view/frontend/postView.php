@@ -1,16 +1,16 @@
 <!--Affichage interface commentaires-->
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php $title = htmlentities($post['title']) ?>
 <?php ob_start(); ?>
 <?php require('include/nav.php'); ?>
 
 <div class="postContent">
     <div align="center"><br>
-        <h2 >Billet simple pour l'Alaska</h2>
+        <h2 >Billet simple pour l'Alaska, un nouveau chapitre !</h2>
             <p class="backToPosts"><a href="#ancre bas de page">Les commentaires</a></p>
               <div class="newpost">
-                    <h3>
+                    <div>
                     <?= ($post['title']) ?>
-                    </h3>
+</div>
                     <p><em> le <?= $post['creation_date_fr'] ?></em></p>
 
                       <p>

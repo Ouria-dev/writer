@@ -7,7 +7,7 @@
 	<h2><span class="titleAdmin">Administration</span></h2><br>
 	<h3><span class="soustitleAdmin">Modifier chapitre</span></h3>
 		<?php
-		while ($data = $chapy->fetch())
+		while ($data = $chapitre->fetch())
 		{
 			?>
 			<div>
@@ -30,7 +30,7 @@
 
 		<?php
 		}
-		$chapy->closeCursor();	
+		$chapitre->closeCursor();	
 		?>
 	</div>
 	

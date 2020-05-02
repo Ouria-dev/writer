@@ -33,11 +33,9 @@
 
   </div>
 </div>
-    <!-- Go To Top
-	============================================= -->
-	<button onclick="topFunction()" id="myBtn" title="Go to top" class="icon-angle-up"></button>
 
 
 <?php $content = ob_get_clean(); ?>
 <?php require('templateAdmin.php'); ?>
+
 

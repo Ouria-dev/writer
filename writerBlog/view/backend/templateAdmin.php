@@ -17,6 +17,12 @@
 	<?= $content ?>
   
 
+    <!-- Go To Top
+	============================================= -->
+	  <button onclick="topFunction()" id="myBtn" title="Go to top" class="icon-angle-up"></button>
   
+<!-- SCRIPT
+    ============================================= -->
+    <script src="public/js/action.js"></script>  
 </body>
 </html>
