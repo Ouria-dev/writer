@@ -10,7 +10,7 @@
 		<?php   while ($data = $posts->fetch())   { ?>
 		
 		<div class="newpost">
-			<h3 id="newpostTitle">
+			<h3 class="newpostTitle">
 				<?=($data['title']) ?>
 				<p>Posté le <?= $data['creation_date_fr'] ?></p>
 			</h3>

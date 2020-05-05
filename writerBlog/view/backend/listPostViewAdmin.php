@@ -14,7 +14,7 @@
 
     <div class="postContent"> <!--affiche titre, date et contenu chapitre-->
         <div class="newpost"> 
-    <h4 id="newpostTitle">
+    <h4 class="newpostTitle">
        <?=($data['title']) ?>
        <em>le <?= $data['creation_date_fr'] ?></em>
      </h4>
@@ -37,5 +37,4 @@
 
 <?php $content = ob_get_clean(); ?>
 <?php require('templateAdmin.php'); ?>
-
 

@@ -338,7 +338,7 @@ nav ul{
     background-color:#10151a;
 }
 
-#newpostTitle {
+.newpostTitle {
     font-size: 1.3em;
     text-align: center;
 }

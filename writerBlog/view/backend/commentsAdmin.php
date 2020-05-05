@@ -1,5 +1,5 @@
-<?php $title = 'Commentaires Signalés(admin)'; ?>
-<!--affichage liste des commentaires signalés-->
+<?php $title = 'Tous les Commentaires du site'; ?>
+<!--affichage liste des commentaires-->
 <?php ob_start(); ?>
 <?php require('include/navAdmin.php'); ?>
 
@@ -10,10 +10,11 @@
 
 
     <table id="moderationTable">
-        <caption class="soustitleAdmin">Gestion des commentaires signalés :</caption>
+        <caption class="soustitleAdmin">Gestion des commentaires du site :</caption>
         <thead>
             <tr>
-                <th class="postColumnTitle">ID</th>
+                <th class="postColumnTitle">ID Commentaires</th>
+                <th class="postColumnTitle">ID Post</th>
                 <th class="authorColumnTitle">Date</th>
                 <th class="commentColumnTitle">Commentaires</th>
                 <th class="commentColumnTitle">Action</th>
@@ -21,35 +22,40 @@
         </thead>
 
         <tbody align="center">
-            <?php
-                    while ($comment = $comments->fetch())
-                    {
-                      ?>
 
+<?php
+   while ($data = $allcomments->fetch()) {
+   ?>
 
                         <tr>
                             <td class="postColumn">
-                                <?= $comment['id'] ?>
+                                <?= $data['id'] ?>
+                            </td>
+
+                            <td class="postColumn">
+                                <?= $data['id_billet'] ?>
                             </td>
 
                             <td class="dateColumn">
-                                <?= $comment['comment_date_fr'] ?>
+                                <?= $data['comment_date_fr'] ?>
                             </td>
 
                             <td class="commentColumn">
-                                <?= nl2br(htmlspecialchars($comment['comment'])) ?> 
+                                <?= nl2br(htmlspecialchars($data['comment'])) ?> 
                             </td>
 
                             <td>
-                                <button type="submit" class="buttonOk"><a href="index.php?action=delReports&amp;id=<?=$comment['id'] ?>">Conserver le commentaire !</a></button>
-
-                                <button type="submit" name="delComments"class="delButton"><a href="index.php?action=delComments&amp;id=<?=$comment['id'] ?>">Supprimer le commentaire !</a></button>
+                                
+                                <button type="submit" name="delComment"class="delButton"><a href="index.php?action=delComment&amp;id=<?=$data['id'] ?>">Supprimer le commentaire !</a></button>
                             </td>
                         </tr>
 
-                        <?php } 
-                        $comments->closeCursor();?>
-        </tbody>
+<?php
+   }
+   $allcomments->closeCursor();	
+   ?>
+
+</tbody>
     </table>
 
 <?php $content = ob_get_clean(); ?>

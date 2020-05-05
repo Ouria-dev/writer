@@ -8,10 +8,11 @@
         <h2 >Billet simple pour l'Alaska, un nouveau chapitre !</h2>
             <p class="backToPosts"><a href="#ancre bas de page">Les commentaires</a></p>
               <div class="newpost">
-                    <div>
+              <h3 id="newpostTitle">
                     <?= ($post['title']) ?>
-</div>
                     <p><em> le <?= $post['creation_date_fr'] ?></em></p>
+                    </h3>
+                    
 
                       <p>
                         <?= nl2br($post['content']) ?>
