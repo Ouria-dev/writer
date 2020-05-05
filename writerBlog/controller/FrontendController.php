@@ -73,7 +73,7 @@ class FrontendController {
 	static function addMember($pseudo, $mail, $mdp) {
 		$membre = new MembersManager();
 		$test = new MembersManager();
-		$pseudo = htmlentities($pseudo);
+		$pseudo = htmlspecialchars($pseudo);
 		$mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 		$testOk = $test->emailtestBdd($mail);
 
@@ -105,7 +105,7 @@ class FrontendController {
 /* Ajout d'un commentaire */
 	static function addComment($idBillet, $idUser, $comment) {
 		$commentManager = new CommentManager();
-		$comment = htmlentities($comment);
+		$comment = htmlspecialchars($comment);
 		$affectedLines = $commentManager->addCommentBdd($idBillet, $_SESSION['id'], $comment);
 	
 		if ($affectedLines === false){ //si le commentaire n'arrive pas à la bdd on arrête le script avec un die
@@ -126,7 +126,7 @@ class FrontendController {
 			header('Location: index.php?action=listChapitres');
 		}else{
 			echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur de signalement !</p>';
-		  }
+		}
 	}
 //end
 }

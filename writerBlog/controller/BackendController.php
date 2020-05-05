@@ -11,7 +11,14 @@ class BackendController {
 
 /* Connexion gestion Admin affiche page writing*/ 
     static function adminViewConnect() {
-        require('view/backend/writingAdmin.php');
+
+        if (isset($_SESSION) && $_SESSION['droits'] == '1') {
+            require('view/backend/writingAdmin.php');
+          }elseif (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+          }else { 
+            echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Vous n\'avez pas de droit administrateur !</p>';
+          }
     }
 
 
@@ -111,7 +118,16 @@ static function addPost($title, $content) {
     static function commentsAdmin()	{ 	
         $commentManager = new CommentManager();
         $comments = $commentManager->getCommentReportsBdd($_GET['signalement']);
-        require('view/backend/commentsAdmin.php');
+
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+        }else{
+          if (isset($_GET['signalement']) && $_GET['signalement'] == '1') {
+            require('view/backend/commentsAdmin.php');
+          }else{
+            echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. problème d\'affichage du signalement !<br><br><a </p><a href="index.php?action=commentsAdmin&amp;signalement=1">Retour aux Commentaires signalés</a>';
+          }
+        }
     }
 
 /* Dé-signale le commentaire signalé */
@@ -119,12 +135,18 @@ static function addPost($title, $content) {
         $commentManager = new CommentManager();
         $comments = $commentManager->delReportsBdd($commentId);
 
-        if($comments === false) {
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+        }elseif($comments === false) {
             die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur... Impossible de designaler le commentaire!</p>');
-        }else{ 
-            header('Location: index.php?action=commentsAdmin&signalement=1');
+        }else{
+            if ((isset($_GET['id'])) && (!empty($_GET['id']))){
+                header('Location: index.php?action=commentsAdmin&signalement=1');
+                }else{ 
+                    echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Impossible de dé-signaler le commentaire !</p>';
+                    require('view/backend/commentsAdmin.php');
+                }
         }
-        require('view/backend/commentsAdmin.php');
     }
 
 /* Supprime le commentaire signalé */
@@ -132,24 +154,34 @@ static function addPost($title, $content) {
         $supprime = new CommentManager();
         $deletedComment = $supprime->delCommentBdd($commentId);
 
-        if($deletedComment === false) {
+
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+          }elseif($deletedComment === false) {
             die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Impossible de supprimer ce commentaire...</p>');
             require('view/backend/commentsAdmin.php');
         }else{
-            header('Location: index.php?action=commentsAdmin&signalement=1');
+            if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
+                header('Location: index.php?action=commentsAdmin&signalement=1');
+            }
         }
     }
+
 
 /* Supprime le commentaire */
     static function delComment($commentId) {
         $supprime = new CommentManager();
         $deletedComment = $supprime->delCommentBdd($commentId);
 
-        if($deletedComment === false) {
+        if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
+            header('Location: index.php');
+          }elseif($deletedComment === false) {
             die('<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Impossible de supprimer ce commentaire...</p>');
             require('view/backend/allCommentsViewAdmin.php');
         }else{
-            header('Location: index.php?action=commentViewAdmin');
+            if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
+                header('Location: index.php?action=commentViewAdmin');
+            }
         }
     }
 //end

@@ -29,7 +29,8 @@ if (isset($_GET['action'])) {
   if (isset($_GET['action'])) { 
     if ($_GET['action'] == 'displayConnexion') {
       FrontendController::displayConnexion(); 
-    }       
+    }
+  }       
   
 /* Déconnexion */
   if (isset($_GET['action'])) {
@@ -38,21 +39,28 @@ if (isset($_GET['action'])) {
     } 
   }
 
-/* Commentaire USER */  
-  if (isset($_GET['action'])) { //signale un commentaire
+/* Signale un commentaire USER */  
+  if (isset($_GET['action'])) { 
     if ($_GET['action'] == 'signal') {
       FrontendController::signal($_GET['id']);
     }
   }
 
+/* Connexion gestion Admin */
+if (isset($_GET['action'])) {
+  if ($_GET['action'] == 'adminViewConnect') {
+      BackendController::adminViewConnect();
+  }
+}
+
 /* Liste chapitres ADMIN */
-if (isset($_GET['action'])) { //affichage liste des chapitres Admin
+if (isset($_GET['action'])) { 
   if ($_GET['action'] == 'listPostViewAdmin') {
         BackendController::listPostViewAdmin(); 
     }
   } 
 
-/* Supprime chapitre */
+/* Supprime chapitre ADMIN */
 if (isset($_GET['action'])) { 
   if ($_GET['action'] == 'delPost') {
         BackendController::delPost($_GET['id']);
@@ -60,8 +68,8 @@ if (isset($_GET['action'])) {
     }
   }
 
-/* Un Chapitre ADMIN*/
-  if (isset($_GET['action'])) { //affiche un chapitre à modifier ou à supprimer Admin
+/* Chapitre à modif ou del ADMIN*/
+  if (isset($_GET['action'])) { 
     if ($_GET['action'] == 'postAdmin') {
         BackendController::postAdmin();
     } 
@@ -75,11 +83,54 @@ if (isset($_GET['action'])) {
     }
 
 /* Liste commentaires ADMIN */
-if (isset($_GET['action'])) { //affichage liste des commentaires Admin
+if (isset($_GET['action'])) {
   if ($_GET['action'] == 'commentViewAdmin') {
-        BackendController::allCommentViewAdmin();
+      BackendController::allCommentViewAdmin();
     }
   }
+
+/* Supprime un commentaire signalé */
+if (isset($_GET['action'])) {
+  if ($_GET['action'] == 'delComments') {
+      BackendController::delComments($_GET['id']);
+  }
+}
+
+/* Supprime un commentaire */
+if (isset($_GET['action'])) {
+  if ($_GET['action'] == 'delComment') {
+      BackendController::delComment($_GET['id']);
+  }
+}
+
+/* Récupère les commentaires signalés */
+if (isset($_GET['action'])) { 
+  if ($_GET['action'] == 'commentsAdmin') {
+      BackendController::commentsAdmin($_GET['signalement']);
+  }
+} 
+
+/* Dé-signale commentaire signalé */
+if (isset($_GET['action'])) { 
+  if ($_GET['action'] == 'delReports') {
+        BackendController::delReports($_GET['id']);
+  }
+}
+
+/* Connexion */
+if(isset($_GET['action'])) { 
+  if ($_GET['action'] == 'connexion') {
+    if (isset($_POST['connexion']) && isset($_POST['pseudo']) && isset($_POST['mdp'])) {
+      $pseudo = htmlspecialchars($_POST['pseudo']);
+    if(!empty(trim($_POST['pseudo'])) && !empty(trim($_POST['mdp']))){
+      FrontendController::connexion($_POST['pseudo'], $_POST['mdp']); 
+    }else{
+      echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Tous les champs doivent-être remplis !</p>';
+      require('view/frontend/connectView.php');
+    }   
+    }
+  }
+}
 
 /* Chapitre et commentaire USER*/
 if (isset($_GET['action'])) {
@@ -98,28 +149,13 @@ if (isset($_GET['action'])) {
      if(!empty($_GET['id']) && ($_POST['comment'])) {
        FrontendController::addComment($_GET['id'], $_SESSION['id'], $_POST['comment']);
      }else{
-       echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Tous les champs ne sont pas remplis !</p>';
+       echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Tous les champs ne sont pas remplis !<br><br><a </p><a href="index.php?action=listChapitres">Retour aux Chapitres</a></p>';
       }
     }else{
-     echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Aucun identifiant de chapitre envoyé !</p>';
+     echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Aucun identifiant de chapitre envoyé !<br><br><a </p><a href="index.php?action=listChapitres">Retour aux Chapitres</a></p>';
     }
   }
 }
-
-/* Connexion gestion Admin */
-  if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'adminViewConnect') {
-      if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
-          header('Location: index.php');
-        }else{
-          if (isset($_SESSION) && $_SESSION['droits'] == '1') {
-            BackendController::adminViewConnect();
-          }else { 
-            echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Vous n\'avez pas de droit administrateur !</p>';
-          }
-        }
-    }
-  }
 
 /* Ajoute un chapitre ADMIN */
 if (isset($_GET['action'])) { // rédation nouveau chapitre
@@ -139,65 +175,6 @@ if (isset($_GET['action'])) { // rédation nouveau chapitre
      }
    }
  }
-
-/* Récupère les commentaires signalés */
-  if (isset($_GET['action'])) { 
-    if ($_GET['action'] == 'commentsAdmin') {
-      if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
-          header('Location: index.php');
-      }else{
-        if (isset($_GET['signalement']) && $_GET['signalement'] == '1') {
-          BackendController::commentsAdmin($_GET['signalement']);
-        }else{
-          echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. problème d\'affichage du signalement !</p>';
-          require('view/backend/commentsAdmin.php');
-        }
-      }
-    } 
-  }
-
-/* Dé-signale commentaire signalé */
-  if (isset($_GET['action'])) { 
-    if ($_GET['action'] == 'delReports') {
-      if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
-          header('Location: index.php');
-      }else{
-        if ((isset($_GET['id'])) && (!empty($_GET['id']))){
-          BackendController::delReports($_GET['id']);
-        }else{ 
-          echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Impossible de dé-signaler le commentaire !</p>';
-          require('view/backend/commentsAdmin.php');
-        }
-      }
-    }
-  }
-
-/* Supprime un commentaire signalé */
-  if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'delComments') {
-      if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
-        header('Location: index.php');
-      }else{
-        if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
-          BackendController::delComments($_GET['id']);
-        }
-      }
-    }
-  }
-
-/* Supprime un commentaire */
-  if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'delComment') {
-      if (!isset($_SESSION['droits']) || ($_SESSION['droits'] == 0)) {
-        header('Location: index.php');
-      }else{
-        if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
-          BackendController::delComment($_GET['id']);
-        }
-      }
-    }
-  }
-}
 
 /* Ajout membre */ 
   if (isset($_GET['action'])) { 
@@ -227,22 +204,7 @@ if (isset($_GET['action'])) { // rédation nouveau chapitre
     }
   }
 
-/* Connexion */
-  if(isset($_GET['action'])) { 
-    if ($_GET['action'] == 'connexion') {
-      if (isset($_POST['connexion']) && isset($_POST['pseudo']) && isset($_POST['mdp'])) {
-        $pseudo = htmlspecialchars($_POST['pseudo']);
-      if(!empty(trim($_POST['pseudo'])) && !empty(trim($_POST['mdp']))){
-        FrontendController::connexion($_POST['pseudo'], $_POST['mdp']); 
-      }else{
-        echo '<p style= "color: red; text-align: center; font-size: 50px; margin: 90px;">Erreur. Tous les champs doivent-être remplis !</p>';
-        require('view/frontend/connectView.php');
-      }   
-      }
-    }
-  }
-
-/* Affiche la page d'accueil */ 
+  /* Affiche la page d'accueil */ 
 }else{ 
   FrontendController::pageAccueil(); //si aucune action, alors affiche la page d'accueil
 }
