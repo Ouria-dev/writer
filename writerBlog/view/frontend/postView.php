@@ -1,5 +1,5 @@
 <!--Affichage interface commentaires-->
-<?php $title = htmlentities($post['title']) ?>
+<?php $title = ($post['title']) ?>
 <?php ob_start(); ?>
 <?php require('include/nav.php'); ?>
 
