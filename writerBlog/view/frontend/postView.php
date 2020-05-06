@@ -1,5 +1,5 @@
 <!--Affichage interface commentaires-->
-<?php $title = ($post['title']) ?>
+<?php $title = strip_tags($post['title']) ?>
 <?php ob_start(); ?>
 <?php require('include/nav.php'); ?>
 
